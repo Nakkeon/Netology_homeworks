@@ -17,7 +17,8 @@ create table if not exists GenreBand (
 
 create table if not exists Album (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(60) unique NOT NULL
+	name VARCHAR(60) unique NOT NULL,
+	release_year INT NOT NULL
 );
 
 
@@ -31,13 +32,14 @@ create table if not exists BandAlbum (
 create table if not exists Tracks (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(60) NOT NULL,
-	track_duration NUMERIC(4, 2),
+	track_duration TIME,
 	Album_id INTEGER REFERENCES Album(id)
 );
 
 create table if not exists Collection (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(60) unique NOT NULL
+	name VARCHAR(60) unique NOT NULL,
+	release_year INT NOT NULL
 );
 
 create table if not exists TrackCollection (

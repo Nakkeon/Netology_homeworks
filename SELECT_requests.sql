@@ -4,7 +4,7 @@ WHERE track_duration = (SELECT MAX(track_duration) FROM Tracks);
 
 SELECT name, track_duration
 FROM Tracks
-WHERE track_duration >= 3.5;
+WHERE track_duration >= '00:03:50';
 
 SELECT name
 FROM Album
@@ -16,18 +16,17 @@ WHERE name NOT LIKE '% %';
 
 SELECT name
 FROM tracks
-WHERE name LIKE '%My%';
+WHERE name ~* '\mmy\M';
 
 SELECT g.name AS genre_name, COUNT(ag.band_id) AS band_count
 FROM Genre g
 LEFT JOIN genreband ag ON g.id = ag.genre_id
 GROUP BY g.name
 
-SELECT a.name AS album_name, COUNT(t.id) AS track_count
+SELECT COUNT(t.id) AS total_tracks
 FROM Album a
-LEFT JOIN Tracks t ON a.id = t.Album_id
-WHERE a.release_year = 2018
-GROUP BY a.id, a.name
+JOIN Tracks t ON a.id = t.Album_id
+WHERE a.release_year BETWEEN 2018 AND 2021;
 
 SELECT a.name AS album_name, AVG(track_duration)
 FROM Album a

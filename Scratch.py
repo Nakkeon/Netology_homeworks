@@ -1,9 +1,7 @@
-class Transport:
-    def __init__(self, name, max_speed, mileage):
-        self.name = name
-        self.max_speed = max_speed
-        self.mileage = mileage
+N = int(input)
+a = [int(x) for x in input().split()]
+count = 0
 
-Autobus = Transport('Renault Logan', 180, 12)
-
-print(Autobus.self)
+for x in a:
+    if x == N:
+        count += 1
